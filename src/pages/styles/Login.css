@@ -1,0 +1,53 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('../../images/login-brackground.png');
+  background-size: cover;
+  background-position: center center;
+  object-fit: cover;
+  min-height: 100vh;
+  gap: 15px
+}
+
+.login-logo {
+  margin-top: 100px;
+  height: 110px;
+  margin-bottom: 55px;
+}
+
+.login-input {
+  width: 293px;
+  height: 58px;
+  border-radius: 15px;
+  border: 1px solid var(--color-gray-1);
+  font-weight: 800;
+  font-size: 16px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.login-btn {
+  width: 293px;
+  height: 58px;
+  border-radius: 15px;
+  border: 1px solid var(--color-gray-1);
+  font-size: 24px;
+}
+
+.login-btn {
+  background-image: var(--color-orange);
+  color: var(--color-white)
+}
+
+.forget-password {
+  font-size: 14px;
+  color: var(--color-gray-2)
+}
+
+.create-acount {
+  position: absolute;
+  font-weight: 800;
+  color: var(--color-gray-2);
+  bottom: 25px;
+}
