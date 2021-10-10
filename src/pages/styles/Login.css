@@ -7,11 +7,11 @@
   background-position: center center;
   object-fit: cover;
   min-height: 100vh;
-  gap: 15px
+  gap: 15px;
+  justify-content: center;
 }
 
 .login-logo {
-  margin-top: 100px;
   height: 110px;
   margin-bottom: 55px;
 }
@@ -46,8 +46,8 @@
 }
 
 .create-acount {
-  position: absolute;
+  position: relative;
   font-weight: 800;
   color: var(--color-gray-2);
-  bottom: 25px;
+  margin-top: 30px;
 }
