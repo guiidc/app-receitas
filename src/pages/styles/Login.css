@@ -13,7 +13,7 @@
 
 .login-logo {
   height: 110px;
-  margin-bottom: 55px;
+  margin-bottom: 30px;
 }
 
 .login-input {
@@ -45,15 +45,17 @@
 }
 
 .create-acount {
-  display: flex;
   position: absolute;
+  justify-self: flex-end;
+  align-self: flex-end;
+  display: flex;
   font-weight: 800;
   color: var(--color-white);
-  margin-top: 30px;
   background-color: var(--color-black-1);
   height: 46px;
-  bottom: 0;
+  width: 100vw;
+  top: calc(100vh - 46px);
   justify-content: center;
   align-items: center;
-  width: 100vw;
+
 }
