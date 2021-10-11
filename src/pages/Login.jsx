@@ -7,6 +7,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const emailRequirement = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const [viewPortHeight] = useState(window.innerHeight)
   
   const handleChange = ({ target }) => {
     if ( target.name === 'email') return setEmail(target.value);
@@ -18,7 +19,7 @@ function Login() {
   }
 
   return(
-    <div className="login-container" style={ { minHeight: window.innerHeight} }>
+    <div className="login-container" style={ { minHeight: viewPortHeight} }>
       <Helmet>
         <title>App Food</title>
       </Helmet>
