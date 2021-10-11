@@ -6,7 +6,7 @@
   background-size: cover;
   background-position: center center;
   object-fit: cover;
-  min-height: 100vh;
+  /* o min height está sendo passado pelo JS */
   gap: 15px;
   justify-content: center;
 }
@@ -33,11 +33,10 @@
   border-radius: 15px;
   border: 1px solid var(--color-gray-1);
   font-size: 24px;
-}
-
-.login-btn {
   background-image: var(--color-orange);
-  color: var(--color-white)
+  color: var(--color-white);
+  border: none;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
 }
 
 .forget-password {
@@ -46,7 +45,15 @@
 }
 
 .create-acount {
+  display: flex;
+  position: absolute;
   font-weight: 800;
-  color: var(--color-gray-2);
+  color: var(--color-white);
   margin-top: 30px;
+  background-color: var(--color-black-1);
+  height: 46px;
+  bottom: 0;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
 }

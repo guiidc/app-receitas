@@ -21,8 +21,6 @@ function Login() {
     <div className="login-container" style={ { minHeight: window.innerHeight} }>
       <Helmet>
         <title>App Food</title>
-        {/* <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/> */}
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Helmet>
       <img className="login-logo" src={ logo } alt="App Food logo" />
       <input
@@ -50,7 +48,9 @@ function Login() {
         Entrar
       </button>
       <span className="forget-password">Esqueci minha senha</span>
-      <span className="create-acount">Criar conta</span>
+      <div className="create-acount">
+        <span >Criar conta</span>
+      </div>
     </div>
   )
 }
