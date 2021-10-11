@@ -36,7 +36,7 @@
   background-image: var(--color-orange);
   color: var(--color-white);
   border: none;
-  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--black-shadow);
 }
 
 .forget-password {

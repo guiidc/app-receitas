@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import logo from '../images/logo.svg';
 import './styles/Login.css';
+import { useHistory } from 'react-router-dom'
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const emailRequirement = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const [viewPortHeight] = useState(document.documentElement.clientHeight)
+  const { push } = useHistory();
   
   const handleChange = ({ target }) => {
     if ( target.name === 'email') return setEmail(target.value);
@@ -14,7 +16,7 @@ function Login() {
   }
 
   const handleClick = () => {
-    console.log('ok')
+    push('/receitas');
   }
 
   return(
