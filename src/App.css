@@ -3,9 +3,9 @@
 :root {
   --color-gray-1: #acacac;
   --color-gray-2: #8a8a8a;
-  --color-black-1: rgba(0, 0, 0, 0.4);
   --color-orange: linear-gradient(to right, #F7630D, #FE9433);
   --color-white: #fff;
+  --black-shadow: 0px 0.85px 3px rgba(0, 0, 0, 0.19);
 }
 
 body {

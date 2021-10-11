@@ -1,0 +1,16 @@
+.footer-container {
+  display: flex;
+  height: 56px;
+  width: 100vw;
+  justify-content: space-around;
+  background-color: var(--color-white);
+  align-items: center;
+  box-shadow: 0px -0.85px 3px rgba(0, 0, 0, 0.19);
+  position: fixed;
+  bottom: 0;
+}
+
+.foot-container img {
+  height: 40px;
+  width: 40px;
+}

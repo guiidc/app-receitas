@@ -1,0 +1,17 @@
+.header-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+  width: 100vw;
+  box-shadow: var(--black-shadow);
+  color: var(--color-gray-2);
+  position: fixed;
+  top: 0;
+  background-color: var(--color-white);
+}
+
+.header-container img {
+  height: 33px;
+  width: 33px;
+}
