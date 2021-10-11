@@ -18,7 +18,7 @@ function Login() {
   }
 
   return(
-    <div className="login-container">
+    <div className="login-container" style={ { minHeight: viewPortHeight } }>
       <img className="login-logo" src={ logo } alt="App Food logo" />
       <input
         className="login-input"
