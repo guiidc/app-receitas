@@ -49,7 +49,7 @@ function Login() {
         Entrar
       </button>
       <span className="forget-password">Esqueci minha senha</span>
-      <div className="create-acount">
+      <div className="create-acount" style={ { top: `calc(100vh - ${viewPortHeight}`} }>
         <span >Criar conta</span>
       </div>
     </div>
