@@ -6,7 +6,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const emailRequirement = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const [viewPortHeight] = useState(window.innerHeight)
+  const [viewPortHeight] = useState(document.documentElement.clientHeight)
   
   const handleChange = ({ target }) => {
     if ( target.name === 'email') return setEmail(target.value);
