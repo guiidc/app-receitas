@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../images/logo.svg';
 import './styles/Login.css';
+import { Helmet } from 'react-helmet';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -18,6 +19,9 @@ function Login() {
 
   return(
     <div className="login-container">
+      <Helmet>
+        <meta content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+      </Helmet>
       <img className="login-logo" src={ logo } alt="App Food logo" />
       <input
         className="login-input"
