@@ -3,8 +3,12 @@
 :root {
   --color-gray-1: #acacac;
   --color-gray-2: #8a8a8a;
+  --color-gray-3: hsla(0, 0%, 93%, 0.80);
+  --color-gray-4: #4a4a4a;
+  --color-gray-5: #959595;
   --color-orange: linear-gradient(to right, #F7630D, #FE9433);
   --color-white: #fff;
+  --color-black-1: rgba(0, 0, 0, 0.4);
   --black-shadow: 0px 0.85px 3px rgba(0, 0, 0, 0.19);
 }
 

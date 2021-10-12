@@ -7,7 +7,7 @@ function RecipeCard({ recipes }) {
   return (
     <div className="card-container">
       { recipes.map((recipe) => (
-        <Link to={`/receita/${recipe.idMeal}`} key={ recipe.idMeal }>
+        <Link to={`/receitas/${recipe.idMeal}`} key={ recipe.idMeal }>
           <div className="recipe-card" >
             <img src={recipe.strMealThumb} alt={ recipe.strMeal} />
             <div className="card-title-container">
