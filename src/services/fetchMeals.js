@@ -47,3 +47,13 @@ export async function fetchByIngredient(ingredient) {
     console.log(err);
   }
 }
+
+export async function fetchById(id) {
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+    const data = await response.json();
+    return data.meals;
+  } catch (err) {
+    console.log(err);
+  }
+}

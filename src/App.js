@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Login from './pages/Login';
 import './App.css';
 import RecipesList from './pages/RecipesList';
+import RecipeDetail from './pages/RecipesDetail';
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
   <Switch>
     <Route exact path="/" component={ Login } />
     <Route exact path="/receitas" component={ RecipesList } />
+    <Route exact path="/receitas/:id" component={ RecipeDetail} />
   </Switch>
   );
 }
