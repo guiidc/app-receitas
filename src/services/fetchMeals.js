@@ -17,3 +17,33 @@ export async function fetchCategories() {
     console.log(err);
   }
 }
+
+export async function fetchByCategory(category) {
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
+    const data = await response.json();
+    return data.meals;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function fetchByRecipe(name) {
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`);
+    const data = await response.json();
+    return data.meals;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+export async function fetchByIngredient(ingredient) {
+  try {
+    const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
+    const data = await response.json();
+    return data.meals;
+  } catch (err) {
+    console.log(err);
+  }
+}

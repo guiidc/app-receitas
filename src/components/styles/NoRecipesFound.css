@@ -1,0 +1,17 @@
+.no-recipes-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-recipes-container h2 {
+  color: #e6631c;
+  margin-top: 50px;
+  font-size: 32px;
+}
+
+.no-recipes-container p {
+  font-size: 18px;
+}
