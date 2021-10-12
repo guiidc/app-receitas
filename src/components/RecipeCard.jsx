@@ -1,17 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './styles/RecipeCard.css';
+import { Link } from 'react-router-dom';
 
-function RecipeCard({ recipes}) {
+function RecipeCard({ recipes }) {
   return (
     <div className="card-container">
       { recipes.map((recipe) => (
-        <div className="recipe-card" key={ recipe.idMeal }>
-          <img src={recipe.strMealThumb} alt={ recipe.strMeal} />
-          <div className="card-title-container">
-            <h4>{ recipe.strMeal }</h4>
+        <Link to={`/receita/${recipe.idMeal}`} key={ recipe.idMeal }>
+          <div className="recipe-card" >
+            <img src={recipe.strMealThumb} alt={ recipe.strMeal} />
+            <div className="card-title-container">
+              <h4>{ recipe.strMeal }</h4>
+            </div>
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );

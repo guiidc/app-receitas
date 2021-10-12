@@ -7,9 +7,11 @@ import { connect } from 'react-redux';
 import { addRecipesAction } from '../redux/actions';
 import Footer from '../components/Footer';
 import './styles/RecipesList.css';
+import SearchBar from '../components/SearchBar';
+import NoRecipesFound from '../components/NoRecipesFound';
 
 
-function RecipesList({ addRecipes }) {
+function RecipesList({ recipesList, addRecipes }) {
   useEffect(() => {
     fetchInitialMeals()
     .then((data) => addRecipes(data.slice(0, 12)));
@@ -18,15 +20,20 @@ function RecipesList({ addRecipes }) {
   return (
     <div className="recipes-list-container">
       <Header />
+      <SearchBar />
       <CategoriesButtons />
-      <RecipeCard />
+      { recipesList ?  <RecipeCard /> : <NoRecipesFound />} 
       <Footer />
     </div>
   )
 }
 
+const mapStateToProps = (state) => ({
+  recipesList: state.recipesReducer,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   addRecipes: (payload) => dispatch(addRecipesAction(payload)),
-})
+});
 
-export default connect(null, mapDispatchToProps)(RecipesList);
+export default connect(mapStateToProps, mapDispatchToProps)(RecipesList);

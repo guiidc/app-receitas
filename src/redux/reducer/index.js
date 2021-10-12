@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import recipesReducer from './recipesReducer';
+import searchBarReducer from './searchBarReducer';
 
-const rootReducer = combineReducers({ recipesReducer })
+const rootReducer = combineReducers({ recipesReducer, searchBarReducer })
 
 export default rootReducer;

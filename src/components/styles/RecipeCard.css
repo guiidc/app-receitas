@@ -1,9 +1,14 @@
 .card-container {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
   padding: 25px 5px;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-container a {
+  text-decoration: none;
 }
 
 .recipe-card {
