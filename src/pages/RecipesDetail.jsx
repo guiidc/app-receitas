@@ -102,7 +102,7 @@ function RecipeDetail({ match }) {
         className="large-orange-button"
         onClick={ () => handleStartRecipe(id) }
       >
-        { isInProgress() ? 'Iniciar Receita' : 'Continuar Receita'}
+        { isInProgress(id) ? 'Continuar Receita' : 'Iniciar Receita'}
       </button>
       <Footer />
     </div>
