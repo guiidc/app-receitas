@@ -2,27 +2,49 @@ import React, { useEffect, useState } from 'react';
 import { fetchById } from '../services/fetchMeals';
 import shareIcon from '../icons/share-icon.svg';
 import favoriteIcon from '../icons/favorite-icon.svg';
+import favoriteIcon2 from '../icons/favorite2-icon.svg';
 import ingredientsIcon from '../icons/ingredients-icon.svg';
 import prepareIcon from '../icons/prepare-icon.svg';
 import getIngredients from '../services/getIngredients';
 import './styles/RecipeDetail.css';
 import Footer from '../components/Footer';
 import copy from 'clipboard-copy';
+import isFavorite from '../services/isFavorite';
+import addRemoveFavorite from '../services/addRemoveFavorite';
+import isInProgress from '../services/isInProgress';
+import { useHistory } from 'react-router-dom';
+import addRecipeInProgress from '../services/addRecipeInProgress';
 
 function RecipeDetail({ match }) {
   const [ selectedRecipe, setSelectedRecipe] = useState({});
   const [ copyMsg, setCopyMsg] = useState(false);
+  const [favorite, setFavorite] = useState(false);
+  const { push } = useHistory();
+  const id = match.params.id
 
   useEffect(() => {
-    fetchById(match.params.id)
+    fetchById(id)
       .then((data) => setSelectedRecipe(data[0]))
       .catch((err) => console.log(err));
-  }, [match.params.id]);
+  }, [id])
+
+  useEffect(() => {
+    setFavorite(isFavorite(id))
+  }, [id])
 
   const handleClipBoard = () => {
     setCopyMsg(true);
-    copy(`https://appfoodproject.netlify.app/receitas/${match.params.id}`);
+    copy(`https://appfoodproject.netlify.app/receitas/${id}`);
     setTimeout(() => setCopyMsg(false), 2000)
+  };
+
+  const handleFavorite = (id) => {
+    setFavorite(addRemoveFavorite(id))
+  };
+
+  const handleStartRecipe = (id) => {
+    addRecipeInProgress(id);
+    push(`/receitas/em-progresso/${id}`);
   }
 
   const { 
@@ -42,7 +64,11 @@ function RecipeDetail({ match }) {
         </div>
         <div className="recipe-share-container">
           <img src={ shareIcon } alt="botão para compartilhar" onClick={ handleClipBoard } />
-          <img src={ favoriteIcon } alt="botão para favoritar" />
+          <img
+            onClick={ () => handleFavorite(id) }
+            src={ favorite ? favoriteIcon2 : favoriteIcon }
+            alt="botão para favoritar"
+          />
         </div>
       </div>
         <div className={ copyMsg ? 'clipboard-msg' : 'hidden'}>
@@ -72,7 +98,12 @@ function RecipeDetail({ match }) {
           <p>{ strInstructions }</p>
         </div>
       </div>
-      <button className="large-orange-button">Iniciar receita</button>
+      <button
+        className="large-orange-button"
+        onClick={ () => handleStartRecipe(id) }
+      >
+        { isInProgress() ? 'Iniciar Receita' : 'Continuar Receita'}
+      </button>
       <Footer />
     </div>
   )
