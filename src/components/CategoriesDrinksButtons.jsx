@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { fetchCategories } from '../services/fetchMeals';
+import { fetchCategories } from '../services/fetchDrinks';
 import './styles/CategoriesButtons.css';
 import { connect } from 'react-redux';
-import { fetchByCategory } from '../services/fetchMeals';
+import { fetchByCategory } from '../services/fetchDrinks';
 import { addRecipesAction } from '../redux/actions';
 
-function CategoriesButtons({ showSearchBar, addRecipes }) {
+function CategoriesMealsButtons({ showSearchBar, addRecipes }) {
   const [categoriesList, setCategoriesList] = useState([]);
 
   useEffect(() => {
@@ -43,4 +43,4 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoriesButtons);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesMealsButtons);
