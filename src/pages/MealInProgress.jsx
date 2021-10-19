@@ -1,50 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory, useParams } from 'react-router-dom';
 import { fetchById } from '../services/fetchMeals';
 import shareIcon from '../icons/share-icon.svg';
 import favoriteIcon from '../icons/favorite-icon.svg';
 import favoriteIcon2 from '../icons/favorite2-icon.svg';
 import ingredientsIcon from '../icons/ingredients-icon.svg';
 import prepareIcon from '../icons/prepare-icon.svg';
-import getIngredients from '../services/getIngredients';
-import './styles/RecipeDetail.css';
-import Footer from '../components/Footer';
+import { addRemoveFavoriteMeals } from '../services/addRemoveFavorite';
 import copy from 'clipboard-copy';
-import isFavorite from '../services/isFavorite';
-import addRemoveFavorite from '../services/addRemoveFavorite';
-import isInProgress from '../services/isInProgress';
-import { useHistory } from 'react-router-dom';
-import addRecipeInProgress from '../services/addRecipeInProgress';
+import Footer from '../components/Footer';
+import getIngredients from '../services/getIngredients';
+import { addRemoveMealIngredient } from '../services/addRemoveUsedIngredient';
+import { isMealFavorite } from '../services/isFavorite';
+import './styles/InProgress.css';
 
-function RecipeDetail({ match }) {
+
+function MealInProgress() {
+  const { id } = useParams();
+  const { push } = useHistory();
   const [ selectedRecipe, setSelectedRecipe] = useState({});
   const [ copyMsg, setCopyMsg] = useState(false);
   const [favorite, setFavorite] = useState(false);
-  const { push } = useHistory();
-  const id = match.params.id
-
+  const usedIngredients = JSON.parse(localStorage.getItem('recipesInProgress'))['meals'][id]
+  const [ingredients, setIngredients] = useState(usedIngredients);
+  
   useEffect(() => {
     fetchById(id)
-      .then((data) => setSelectedRecipe(data[0]))
-      .catch((err) => console.log(err));
+    .then((data) => setSelectedRecipe(data[0]))
+    .catch((err) => console.log(err));
   }, [id])
 
   useEffect(() => {
-    setFavorite(isFavorite(id))
+    setFavorite(isMealFavorite(id))
   }, [id])
-
+  
+  const handleFavorite = () => {
+    setFavorite(addRemoveFavoriteMeals(selectedRecipe, id))
+  };
+  
   const handleClipBoard = () => {
     setCopyMsg(true);
-    copy(`https://appfoodproject.netlify.app/receitas/${id}`);
+    copy(`https://appfoodproject.netlify.app/comidas/${id}`);
     setTimeout(() => setCopyMsg(false), 2000)
   };
 
-  const handleFavorite = (id) => {
-    setFavorite(addRemoveFavorite(id))
-  };
+  const handleIngredients = (ingredient) => {
+    setIngredients(addRemoveMealIngredient(selectedRecipe, ingredient))
+  }
 
-  const handleStartRecipe = (id) => {
-    addRecipeInProgress(id);
-    push(`/receitas/em-progresso/${id}`);
+  const handleFinishRecipe = () => {
+    push('/comidas')
   }
 
   const { 
@@ -53,7 +58,7 @@ function RecipeDetail({ match }) {
     strMealThumb,
     strInstructions,
   } = selectedRecipe;
-
+  
   return (
     <div className="recipe-detail-container">
       <img id="recipe-img" src={ strMealThumb } alt={ strMeal} />
@@ -79,14 +84,18 @@ function RecipeDetail({ match }) {
           <img src={ ingredientsIcon } alt="Ícone de ingrediente" />
           <h3>Ingredientes</h3>
         </div>
-        <div className="info-wrapper">
-          <ul>
-            { getIngredients(selectedRecipe).map((ingredient) => (
-              <li key={ ingredient }>
-                { ingredient }
-              </li>
-              ))}
-          </ul>
+        <div className="info-wrapper" style={ { display: 'flex', flexDirection: 'column' }}>
+          { getIngredients(selectedRecipe).map((ingredient) => (
+            <label className={ingredients.includes(ingredient) ? 'line-through' : ''} key={ ingredient }>
+              <input
+                type="checkbox"
+                onClick={ () => handleIngredients(ingredient) }
+                checked = { ingredients.includes(ingredient) }
+                readOnly
+              />
+              { ingredient }
+            </label>
+            ))}
         </div>
       </div>
       <div className="info-container">
@@ -100,13 +109,14 @@ function RecipeDetail({ match }) {
       </div>
       <button
         className="large-orange-button"
-        onClick={ () => handleStartRecipe(id) }
+        onClick={ () => handleFinishRecipe() }
+        disabled={ ingredients.length !== getIngredients(selectedRecipe).length }
       >
-        { isInProgress(id) ? 'Continuar Receita' : 'Iniciar Receita'}
+        Finalizar receita
       </button>
       <Footer />
     </div>
   )
 }
 
-export default RecipeDetail;
+export default MealInProgress;

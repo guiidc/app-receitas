@@ -16,7 +16,7 @@ function Login() {
   }
 
   const handleClick = () => {
-    push('/receitas');
+    push('/comidas');
   }
 
   return(

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import CategoriesButtons from '../components/CategoriesButtons';
+import CategoriesMealsButtons from '../components/CategoriesMealsButtons';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
 import { fetchInitialMeals } from '../services/fetchMeals';
@@ -11,7 +11,7 @@ import SearchBar from '../components/SearchBar';
 import NoRecipesFound from '../components/NoRecipesFound';
 
 
-function RecipesList({ recipesList, addRecipes }) {
+function MealsList({ recipesList, addRecipes }) {
   useEffect(() => {
     fetchInitialMeals()
     .then((data) => addRecipes(data.slice(0, 12)));
@@ -21,7 +21,7 @@ function RecipesList({ recipesList, addRecipes }) {
     <div className="recipes-list-container">
       <Header />
       <SearchBar />
-      <CategoriesButtons />
+      <CategoriesMealsButtons />
       { recipesList ?  <RecipeCard /> : <NoRecipesFound />} 
       <Footer />
     </div>
@@ -36,4 +36,4 @@ const mapDispatchToProps = (dispatch) => ({
   addRecipes: (payload) => dispatch(addRecipesAction(payload)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecipesList);
+export default connect(mapStateToProps, mapDispatchToProps)(MealsList);

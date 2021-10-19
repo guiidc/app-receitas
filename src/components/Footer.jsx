@@ -8,8 +8,10 @@ import { Link } from 'react-router-dom';
 function Footer() {
   return (
     <div className="footer-container">
-      <img src={ drinksIcon } alt="Link para lista bebidas" />
-      <Link to="/receitas">
+      <Link to="/bebidas">
+        <img src={ drinksIcon } alt="Link para lista bebidas" />
+      </Link>
+      <Link to="/comidas">
         <img src={ mealsIcon } alt=" Link para lista de comidas" />
       </Link>
       <img src={ exploreIcon } alt="Link para explorar" />

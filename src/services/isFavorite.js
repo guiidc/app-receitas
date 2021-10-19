@@ -1,7 +1,14 @@
-const isFavorite = (id) => {
+export function isMealFavorite(id) {
   const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
-  if (!favoriteRecipes || !favoriteRecipes.includes(id)) return false;
+  if (!favoriteRecipes) return false;
+  if (!favoriteRecipes.filter(({ idMeal }) => idMeal === id).length) return false;
   return true;  
 }
 
-export default isFavorite;
+export function isDrinkFavorite(id) {
+  const favoriteRecipes = JSON.parse(localStorage.getItem('favoriteRecipes'));
+  if (!favoriteRecipes) return false;
+  if (!favoriteRecipes.filter(({ idDrink }) => idDrink === id).length) return false;
+  return true;  
+}
+
