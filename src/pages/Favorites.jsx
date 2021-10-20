@@ -63,8 +63,10 @@ function Favorites() {
                 <img src={ actualType === 'meal' ? recipe.strMealThumb : recipe.strDrinkThumb} alt={ actualType === 'meal' ? recipe.strMeal : recipe.strDrink } />
               </div>
               <div className="favorite-card-info">
+                <div className="favorite-card-data">
                   <p>{ recipe.strCategory }</p>
                   <h3>{ actualType === 'meal' ? recipe.strMeal : recipe.strDrink}</h3>
+                </div>
                 <div className="recipe-share-container">
                   <img src={ shareIcon } alt="botão para compartilhar" onClick={ () => handleClipBoard(recipe, index) } />
                   <img

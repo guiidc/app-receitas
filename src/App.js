@@ -9,6 +9,8 @@ import DrinksList from './pages/DrinksList';
 import DrinkDetail from './pages/DrinkDetail';
 import MealInProgress from './pages/MealInProgress';
 import DrinkInProgress from './pages/DrinkInProgress'
+import DoneRecipes from './pages/DoneRecipes';
+import Profile from './pages/Profile';
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
     <Route exact path="/favoritos" component={ Favorites } />
     <Route exact path="/comidas/:id/em-progresso" component={ MealInProgress } />
     <Route exact path="/bebidas/:id/em-progresso" component={ DrinkInProgress } />
+    <Route exact path="/receitas-feitas" component={ DoneRecipes } />
+    <Route exact path="/perfil" component={ Profile } />
   </Switch>
   );
 }

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import logo from '../images/logo.svg';
 import './styles/Login.css';
 import { useHistory } from 'react-router-dom'
+import { connect } from 'react-redux';
+import userLoginAction from '../redux/actions';
 
-function Login() {
+function Login({ userLogin }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const emailRequirement = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -16,6 +18,7 @@ function Login() {
   }
 
   const handleClick = () => {
+    userLogin(email);
     push('/comidas');
   }
 
@@ -53,5 +56,7 @@ function Login() {
     </div>
   )
 }
-
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  userLogin: (payload) => dispatch(userLoginAction(payload)),
+})
+export default connect(null, mapDispatchToProps)(Login);
