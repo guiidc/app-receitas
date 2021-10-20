@@ -3,7 +3,7 @@ export default function getIngredients(recipe) {
   const keys = Object.keys(recipe);
   keys.forEach((key) => {
     if (recipe[key] && /strIngredient/ig.test(key)) {
-      const finalNumber = key.match(/\d/g);
+      const finalNumber = key.match(/\d/g).join('');
       ingredients.push(`${recipe[key]} - ${recipe[`strMeasure${finalNumber}`]}`)
     }
   })

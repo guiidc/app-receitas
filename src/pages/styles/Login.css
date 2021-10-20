@@ -45,16 +45,9 @@
 }
 
 .create-acount {
-  position: absolute;
-  justify-self: flex-end;
-  align-self: flex-end;
   display: flex;
   font-weight: 800;
-  color: var(--color-white);
-  background-color: var(--color-black-1);
-  height: 46px;
-  width: 100vw;
+  color: var(--color-orange-2);
   bottom: 0;
   justify-content: center;
-  align-items: center;
 }
