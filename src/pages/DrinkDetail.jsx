@@ -72,7 +72,7 @@ function RecipeDetail({ match }) {
         </div>
       </div>
         <div className={ copyMsg ? 'clipboard-msg' : 'hidden'}>
-          <span>Link Copiado!</span>
+          <p id="copy-msg-detail">Link Copiado!</p>
         </div>
       <div className="info-container">
         <div className="info-header">

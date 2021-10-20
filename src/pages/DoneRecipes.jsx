@@ -37,7 +37,7 @@ function DoneRecipes() {
   
   return (
     <div className="favorites-container">
-      <Header />
+      <Header title={ 'Receitas Feitas'}/>
       <SearchBar />
       <div className="filter-buttons-container">
         <button type="button" onClick ={() => setType('meal')} className="orange-small-buttons">Comida</button>

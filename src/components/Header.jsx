@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { showSearchBarAction } from '../redux/actions';
 import { Link } from 'react-router-dom';
 
-function Header({ searchBarStatus, showSearchBar}) {
+function Header({ searchBarStatus, showSearchBar, title}) {
   const handleClick = () => {
     showSearchBar(!searchBarStatus);
   }
@@ -19,7 +19,7 @@ function Header({ searchBarStatus, showSearchBar}) {
           alt="botão entrar na página de perfil"
           />
       </Link>
-      <h2>Receitas</h2>
+      <h2>{ title }</h2>
       <img
         onClick={ handleClick }
         src={ searchIcon }

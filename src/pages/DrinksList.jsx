@@ -19,7 +19,7 @@ function DrinksList({ recipesList, addRecipes }) {
 
   return (
     <div className="recipes-list-container">
-      <Header />
+      <Header title={ 'Drinks' }/>
       <SearchBar />
       <CategoriesDrinksButtons />
       { recipesList ?  <RecipeCard /> : <NoRecipesFound />} 
