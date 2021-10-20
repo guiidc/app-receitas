@@ -13,16 +13,17 @@ import getIngredients from '../services/getIngredients';
 import { addRemoveDrinkIngredient } from '../services/addRemoveUsedIngredient';
 import { isDrinkFavorite } from '../services/isFavorite';
 import './styles/InProgress.css';
+import { addDoneDrinkRecipe } from '../services/addDoneRecipe';
 
 
-function MealInProgress() {
+function DrinkInProgress() {
   const { id } = useParams();
   const { push } = useHistory();
   const [ selectedRecipe, setSelectedRecipe] = useState({});
   const [ copyMsg, setCopyMsg] = useState(false);
   const [favorite, setFavorite] = useState(false);
-  const usedIngredients = JSON.parse(localStorage.getItem('recipesInProgress'))['drinks'][id]
-  const [ingredients, setIngredients] = useState(usedIngredients);
+  const localStorageUsedIngredients = JSON.parse(localStorage.getItem('recipesInProgress'))['drinks'][id]
+  const [usedIngredients, setUsedIngredients] = useState(localStorageUsedIngredients);
   
   useEffect(() => {
     fetchById(id)
@@ -40,16 +41,17 @@ function MealInProgress() {
   
   const handleClipBoard = () => {
     setCopyMsg(true);
-    copy(`https://appfoodproject.netlify.app/bebidas/${id}`);
+    copy(`https://appfoodproject.netlify.app/comidas/${id}`);
     setTimeout(() => setCopyMsg(false), 2000)
   };
 
   const handleIngredients = (ingredient) => {
-    setIngredients(addRemoveDrinkIngredient(selectedRecipe, ingredient))
+    setUsedIngredients(addRemoveDrinkIngredient(selectedRecipe, ingredient))
   }
 
   const handleFinishRecipe = () => {
-    push('/bebidas')
+    addDoneDrinkRecipe(selectedRecipe)
+    push('/comidas')
   }
 
   const { 
@@ -86,11 +88,11 @@ function MealInProgress() {
         </div>
         <div className="info-wrapper" style={ { display: 'flex', flexDirection: 'column' }}>
           { getIngredients(selectedRecipe).map((ingredient) => (
-            <label className={ingredients.includes(ingredient) ? 'line-through' : ''} key={ ingredient }>
+            <label className={usedIngredients.includes(ingredient) ? 'line-through' : ''} key={ ingredient }>
               <input
                 type="checkbox"
                 onClick={ () => handleIngredients(ingredient) }
-                checked = { ingredients.includes(ingredient) }
+                checked = { usedIngredients.includes(ingredient) }
                 readOnly
               />
               { ingredient }
@@ -110,7 +112,7 @@ function MealInProgress() {
       <button
         className="large-orange-button"
         onClick={ () => handleFinishRecipe() }
-        disabled={ ingredients.length !== getIngredients(selectedRecipe).length }
+        disabled={ usedIngredients.length !== getIngredients(selectedRecipe).length }
       >
         Finalizar receita
       </button>
@@ -119,4 +121,4 @@ function MealInProgress() {
   )
 }
 
-export default MealInProgress;
+export default DrinkInProgress;

@@ -6,7 +6,7 @@ export function addMealInProgress(recipe) {
     return;
   }
 
-  if(recipesInProgress.meals[recipe.idMeal]) return;
+  if(recipesInProgress.meals && recipesInProgress.meals[recipe.idMeal]) return;
   
 
   const newRecipesInProgress = {...recipesInProgress, meals: { ...recipesInProgress.meals, [recipe.idMeal]: []}};
@@ -15,13 +15,13 @@ export function addMealInProgress(recipe) {
 
 export function addDrinkInProgress(recipe) {
   const recipesInProgress = JSON.parse(localStorage.getItem('recipesInProgress'));
-  if (!recipesInProgress) {
+  if(!recipesInProgress) {
     const recipesInProgress = { drinks: { [recipe.idDrink]: []} }
     localStorage.setItem('recipesInProgress', JSON.stringify(recipesInProgress));
     return;
   }
 
-  if(recipesInProgress.meals[recipe.idDrink]) return;
+  if(recipesInProgress.drinks && recipesInProgress.drinks[recipe.idDrink]) return;
 
   const newRecipesInProgress = {...recipesInProgress, drinks: { ...recipesInProgress.drinks, [recipe.idDrink]: []}};
   localStorage.setItem('recipesInProgress', JSON.stringify(newRecipesInProgress));
