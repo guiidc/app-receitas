@@ -17,7 +17,7 @@ function Favorites() {
   
   if (!favorites) return (
     <div>
-      <Header />
+      <Header title={ 'Favoritos' }/>
       <SearchBar />
       <NoRecipesFound />
       <Footer />
@@ -47,7 +47,7 @@ function Favorites() {
 
   return (
     <div className="favorites-container">
-      <Header />
+      <Header title={ 'Favoritos' }/>
       <SearchBar />
       <div className="filter-buttons-container">
         <button type="button" onClick ={() => setType('meal')} className="orange-small-buttons">Comida</button>

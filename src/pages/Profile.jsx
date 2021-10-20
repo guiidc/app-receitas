@@ -6,11 +6,13 @@ import { connect } from 'react-redux';
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import './styles/Profile.css';
+import SearchBar from '../components/SearchBar';
 
 function Profile({ email }) {
   return (
     <>
-      <Header />
+      <Header title={ 'Perfil '}/>
+      <SearchBar />
       <div className="profile-container">
         <div className="profile-wrapper">
           <span>Olá, <b>seja bem-vindo(a)!</b></span>

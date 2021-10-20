@@ -16,7 +16,8 @@ function SearchBar({ showSearchBar, addRecipes, setSearchBar}) {
     setInputValue(target.value);
   }
 
-  const handleClick = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     if (!inputValue.trim()) return;
 
     if (radioValue === 'recipes') {
@@ -49,42 +50,43 @@ function SearchBar({ showSearchBar, addRecipes, setSearchBar}) {
 
 
   return (
-    <div className={ showSearchBar ? 'search-bar-container' : 'hidden'}>
-      <input
-        type="text"
-        id="search-bar"
-        placeholder="Procurar receitas"
-        onChange={ handleInput }
-        value={ inputValue }
-      />
-      <div className="search-bar-buttons-container" onChange={ handleRadio }>
-        <label>
-          <input
-            type="radio" 
-            name="searchType"
-            className="radio-search"
-            value="recipes"
+    <form onSubmit={ handleSubmit }>
+      <div className={ showSearchBar ? 'search-bar-container' : 'hidden'}>
+        <input
+          type="text"
+          id="search-bar"
+          placeholder="Procurar receitas"
+          onChange={ handleInput }
+          value={ inputValue }
+        />
+        <div className="search-bar-buttons-container" onChange={ handleRadio }>
+          <label>
+            <input
+              type="radio" 
+              name="searchType"
+              className="radio-search"
+              value="recipes"
+              />
+            Receitas
+          </label>
+          <label>
+            <input 
+              type="radio"
+              name="searchType"
+              className="radio-search"
+              value="ingredients"
             />
-          Receitas
-        </label>
-        <label>
-          <input 
-            type="radio"
-            name="searchType"
-            className="radio-search"
-            value="ingredients"
-          />
-          Ingredientes
-        </label>
-        <button
-          id="search-btn"
-          type="button"
-          onClick={ handleClick }
-        >
-          Pesquisar
-        </button>
+            Ingredientes
+          </label>
+          <button
+            id="search-btn"
+            type="submit"
+          >
+            Pesquisar
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
   )
 }
 
