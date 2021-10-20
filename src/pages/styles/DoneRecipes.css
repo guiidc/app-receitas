@@ -1,0 +1,42 @@
+.done-card-info {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 15px;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+  gap: 15px;
+
+}
+
+.done-card-info-wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.done-card-info-wrapper h3 {
+  color: var(--color-orange-3);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 90px;
+}
+
+.done-card-info-wrapper p {
+  width: 90px;
+  overflow: hidden;
+  color: var(--color-gray-2);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.done-date {
+  background-image: var(--color-orange);
+  color: var(--color-white);
+  border-radius: 15px;
+  padding: 5px 15px;
+  font-size: 16px;
+}

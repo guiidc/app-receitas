@@ -4,6 +4,7 @@ import perfilIcon from '../icons/perfil-icon.svg';
 import './styles/Header.css';
 import { connect } from 'react-redux';
 import { showSearchBarAction } from '../redux/actions';
+import { Link } from 'react-router-dom';
 
 function Header({ searchBarStatus, showSearchBar}) {
   const handleClick = () => {
@@ -12,10 +13,12 @@ function Header({ searchBarStatus, showSearchBar}) {
 
   return(
     <div className="header-container">
-      <img
-        src={ perfilIcon }
-        alt="botão entrar na página de perfil"
-        />
+      <Link to="/perfil">
+        <img
+          src={ perfilIcon }
+          alt="botão entrar na página de perfil"
+          />
+      </Link>
       <h2>Receitas</h2>
       <img
         onClick={ handleClick }
