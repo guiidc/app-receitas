@@ -25,12 +25,12 @@ export function addDoneMealRecipe(recipe) {
 
 export function addDoneDrinkRecipe(recipe) {
   const newRecipe = {
-    id: recipe.idMeal,
-    type: 'meal',
+    id: recipe.idDrink,
+    type: 'drink',
     area: recipe.strArea,
     category: recipe.strCategory,
-    name: recipe.strMeal,
-    image: recipe.strMealThumb,
+    name: recipe.strDrink,
+    image: recipe.strDrinkThumb,
     doneDate: new Date().toLocaleDateString('pt-BR'),
     tags: recipe.strTags,
   };
