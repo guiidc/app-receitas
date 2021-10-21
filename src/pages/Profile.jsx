@@ -7,8 +7,15 @@ import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import './styles/Profile.css';
 import SearchBar from '../components/SearchBar';
+import { userLogoutAction } from '../redux/actions';
+import { useHistory } from 'react-router-dom';
 
-function Profile({ email }) {
+function Profile({ email, logout }) {
+  const history = useHistory();
+  const handleLogout = () => {
+    logout('');
+    history.push('/')
+  }
   return (
     <>
       <Header title={ 'Perfil '}/>
@@ -25,7 +32,7 @@ function Profile({ email }) {
           <Link to="/favoritos">
             <button className="perfil-button">Receitas Favoritas</button>
           </Link>
-          <h4>Sair da conta</h4>
+          <h4 onClick={ handleLogout }>Sair da conta</h4>
         </div>
       </div>
       <Footer />
@@ -36,5 +43,8 @@ function Profile({ email }) {
 const mapStateToProps = (state) => ({
   email: state.userReducer,
 })
+const mapDispatchToProps = (dispatch) => ({
+  logout: (payload) => dispatch(userLogoutAction(payload)),
+})
 
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

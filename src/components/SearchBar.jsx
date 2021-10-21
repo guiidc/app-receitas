@@ -3,10 +3,12 @@ import './styles/SearchBar.css';
 import { connect } from 'react-redux';
 import { fetchByIngredient, fetchByRecipe } from '../services/fetchMeals';
 import  { showSearchBarAction, addRecipesAction } from '../redux/actions';
+import { useHistory } from 'react-router-dom';
 
 function SearchBar({ showSearchBar, addRecipes, setSearchBar}) {
   const [radioValue, setRadioValue] = useState('');
   const [inputValue, setInputValue] = useState('');
+  const history = useHistory();
 
   const handleRadio = ({ target }) => {
     setRadioValue(target.value)
@@ -45,7 +47,8 @@ function SearchBar({ showSearchBar, addRecipes, setSearchBar}) {
         setSearchBar(false);
       }
     })
-    .catch((err) => console.log(err));    
+    .catch((err) => console.log(err));
+    history.push("/comidas");
   }
 
 

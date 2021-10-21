@@ -51,3 +51,7 @@
   bottom: 0;
   justify-content: center;
 }
+
+.create-acount span {
+  font-size: 16px;
+}

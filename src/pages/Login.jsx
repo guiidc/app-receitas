@@ -3,7 +3,7 @@ import logo from '../images/logo.svg';
 import './styles/Login.css';
 import { useHistory } from 'react-router-dom'
 import { connect } from 'react-redux';
-import userLoginAction from '../redux/actions';
+import { userLoginAction } from '../redux/actions';
 
 function Login({ userLogin }) {
   const [email, setEmail] = useState('');
@@ -51,7 +51,7 @@ function Login({ userLogin }) {
       </button>
       <span className="forget-password">Esqueci minha senha</span>
       <div className="create-acount">
-        <span >Criar conta</span>
+        <span>Criar conta</span>
       </div>
     </div>
   )
